@@ -24,6 +24,8 @@ function name()
     var name = prompt('What is your name?');
     var result = 'Hello' + ' ' + name;
     console.log(result);
+
+    
 }
 
 name();
@@ -31,3 +33,14 @@ name();
 // Array
 
 let fruits = ['banana', 'pera','manzana']
+
+// Objeto
+
+let student = {
+    first: 'name',
+    last: 'lastname',
+
+    studentInfo: function(){
+        return this.first + '\n'
+        }
+}
