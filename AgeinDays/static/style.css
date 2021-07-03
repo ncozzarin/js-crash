@@ -24,4 +24,19 @@
     box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.7);
     margin: 10px;
 }
+.flexbox-rps{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
 
+.flexbox-rps img{
+    height: 150;
+    width: 150;
+    margin: 10px;
+    
+}
+
+.flexbox-rps img:hover{
+    box-shadow: 0px 10px 50px green;
+}
