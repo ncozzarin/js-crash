@@ -40,3 +40,10 @@
 .flexbox-rps img:hover{
     box-shadow: 0px 10px 50px green;
 }
+
+.flexbox-rps h1{
+    font-size: 60px;
+    padding: 30px;
+    
+}
+

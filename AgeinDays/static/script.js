@@ -30,3 +30,73 @@ function createCat(){
 
 // Rock, Paper, Scissors
 
+function rpsGame(yourChoice) {
+    console.log(yourChoice);
+    var humanChoice, botChoice;
+    humanChoice = yourChoice.id;
+    botChoice = numberToChoice(Math.floor(Math.random() * 3));
+    results = decideWinner(humanChoice, botChoice); // Returns an array of int
+    console.log(humanChoice);
+    console.log(botChoice);
+    console.log(results);
+    message = finalMessage(results); // {'message': 'You Won!', 'color' : 'green' }
+    rpsFrontEnd(yourChoice.id, botChoice, message);
+    
+}
+
+function numberToChoice(number){
+    return ['rock', 'paper', 'scissors'][number];
+}
+
+function decideWinner(yourChoice, botChoice){
+    
+    var rpsDatabase = {
+        'rock': {'scissors': 1, 'rock': 0.5, 'paper': 0},
+        'paper': {'rock': 1, 'paper': 0.5, 'scissors':0},
+        'scissors': {'paper': 1, 'scissors': 0.5, 'rock': 0}
+    };
+
+    var yourScore = rpsDatabase[yourChoice][botChoice];
+    var botScore = rpsDatabase[botChoice][yourChoice];
+    return [yourScore, botScore];
+}
+
+function finalMessage([yourScore, botChoice]){
+    if(yourScore === 0) {
+        return {'message': 'You lost!', 'color': 'red'};
+    }else if (yourScore === 0.5){
+        return {'message': 'You tied!', 'color': 'yellow'};
+    } else {
+        return {'message': 'You won!', 'color': 'green'};
+    }
+}
+
+function rpsFrontEnd(humanImageChoice, botImageChoice, finalMessage){
+    var imagesJSON = {
+        'rock': document.getElementById('rock').src,
+        'paper': document.getElementById('paper').src,
+        'scissors' : document.getElementById('scissors').src
+    }
+
+    // remove img
+
+    document.getElementById('rock').remove();
+    document.getElementById('paper').remove();
+    document.getElementById('scissors').remove();
+
+    let humanDiv = document.createElement('div');
+    let botDiv = document.createElement('div');
+    let messageDiv = document.createElement('div');
+
+    humanDiv.innerHTML = "<img src='" + imagesJSON[humanImageChoice] + "' style='box-shadow: 0px 10px 50px blue'>"
+    botDiv.innerHTML = "<img src='" + imagesJSON[botImageChoice] + "' style='box-shadow: 0px 10px 50px red'>"
+    messageDiv.innerHTML = "<h1 style='color: " + finalMessage['color'] + "'>" + finalMessage['message'] + "</h1>"
+    document.getElementById('flexbox-rps').appendChild(humanDiv);
+    document.getElementById('flexbox-rps').appendChild(messageDiv);
+    document.getElementById('flexbox-rps').appendChild(botDiv);
+    
+
+
+
+
+}
