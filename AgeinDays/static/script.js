@@ -94,9 +94,80 @@ function rpsFrontEnd(humanImageChoice, botImageChoice, finalMessage){
     document.getElementById('flexbox-rps').appendChild(humanDiv);
     document.getElementById('flexbox-rps').appendChild(messageDiv);
     document.getElementById('flexbox-rps').appendChild(botDiv);
-    
 
+}
 
+// Change the color of all buttons
+var all_buttons = document.getElementsByTagName('button');
+let copyAllButtons = [];
+for (let i=0; i < all_buttons.length; i++)
+{
+    copyAllButtons.push(all_buttons[i].classList[1]);
+}
 
+function buttonColorChange(buttonSelection){
+    console.log(buttonSelection.value);
+    if(buttonSelection.value === 'Red')
+    {
+        buttonsRed();
+    }
+    else if(buttonSelection.value === 'Green')
+    {
+        buttonsGreen();
+    }
+    else if(buttonSelection.value === 'Blue')
+    {
+        buttonsBlue();
+    }
+    else if(buttonSelection.value === 'Reset')
+    {
+        buttonsReset();
+    }
+    else
+    {
+        buttonsRandom();
+    }
+}
 
+function buttonsRed(){
+    for (let i=0; i < all_buttons.length; i++)
+    {
+        all_buttons[i].classList.remove(all_buttons[i].classList[1]);
+        all_buttons[i].classList.add('btn-danger');
+    }
+}
+
+function buttonsGreen(){
+    for (let i=0; i < all_buttons.length; i++)
+    {
+        all_buttons[i].classList.remove(all_buttons[i].classList[1]);
+        all_buttons[i].classList.add('btn-success');
+    }
+}
+
+function buttonsBlue(){
+    for (let i=0; i < all_buttons.length; i++)
+    {
+        all_buttons[i].classList.remove(all_buttons[i].classList[1]);
+        all_buttons[i].classList.add('btn-warning');
+    }
+}
+
+function buttonsReset()
+{
+    for (let i=0; i < all_buttons.length; i++)
+    {
+        all_buttons[i].classList.remove(all_buttons[i].classList[1]);
+        all_buttons[i].classList.add(copyAllButtons[i]);
+    }
+}
+
+function buttonsRandom()
+{
+    var choices = ['btn-primary', 'btn-danger', 'btn-success', 'btn-warning'];
+    for (let i=0; i < all_buttons.length; i++)
+    {
+        all_buttons[i].classList.remove(all_buttons[i].classList[1]);
+        all_buttons[i].classList.add(choices[Math.floor(4*Math.random())]);
+    }
 }
