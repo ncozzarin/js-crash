@@ -105,29 +105,27 @@ for (let i=0; i < all_buttons.length; i++)
     copyAllButtons.push(all_buttons[i].classList[1]);
 }
 
-function buttonColorChange(buttonSelection){
-    console.log(buttonSelection.value);
-    if(buttonSelection.value === 'Red')
-    {
-        buttonsRed();
-    }
-    else if(buttonSelection.value === 'Green')
-    {
-        buttonsGreen();
-    }
-    else if(buttonSelection.value === 'Blue')
-    {
-        buttonsBlue();
-    }
-    else if(buttonSelection.value === 'Reset')
-    {
-        buttonsReset();
-    }
-    else
-    {
-        buttonsRandom();
-    }
-}
+function buttonColorChange(buttonSelection) {
+        const {value} = buttonSelection
+        switch (value) {
+          case 'Red':
+            buttonsRed();
+            break;
+          case 'Green':
+            buttonsGreen();
+            break;
+          case 'Blue':
+            buttonsBlue();
+            break;
+          case 'Reset':
+            buttonsReset();
+            break;
+          default:
+            buttonsRandom();
+            break;
+        }
+      }
+
 
 function buttonsRed(){
     for (let i=0; i < all_buttons.length; i++)
